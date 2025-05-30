@@ -88,6 +88,46 @@
         <!-- <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script> -->
         <script src="https://cdn.jsdelivr.net/npm/vanta/dist/vanta.waves.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/vanta/dist/vanta.rings.min.js"></script>
+
+        <script>
+        // Define the deadlines (converted to UTC)
+        // Submission Deadline: July 1, 2025 23:59 AoE equals July 2, 2025 11:59:00 UTC
+        var submissionDeadline = new Date("Jul 2, 2025 11:59:00 UTC").getTime();
+        // Camera Ready Deadline: Aug. 7, 2025 23:59 AoE equals Aug. 8, 2025 11:59:00 UTC
+        var cameraReadyDeadline = new Date("Aug 8, 2025 11:59:00 UTC").getTime();
+
+        // Function to update a countdown element by id
+        function updateCountdown(deadline, elementId) {
+            var now = new Date().getTime();
+            var distance = deadline - now;
+            var countdownElem = document.getElementById(elementId);
+            if (distance < 0) {
+            countdownElem.innerHTML = "00 weeks 00 days 00:00:00";
+            countdownElem.style.color = "gray";
+            } else {
+            var totalDays = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var weeks = Math.floor(totalDays / 7);
+            var days = totalDays % 7;
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            var formatNumber = function(num) {
+                return num < 10 ? "0" + num : num;
+            };
+            countdownElem.innerHTML = formatNumber(weeks) + " weeks " +
+                formatNumber(days) + " days " + formatNumber(hours) + ":" +
+                formatNumber(minutes) + ":" + formatNumber(seconds);
+            }
+            countdownElem.style.color = "black"; // Reset color to black if not expired
+        }
+
+        // Update both countdowns every second
+        setInterval(function() {
+            updateCountdown(submissionDeadline, "countdown_submission");
+            updateCountdown(cameraReadyDeadline, "countdown_camera");
+        }, 1000);
+        </script>
+    </script>
     </head>
 
     <body>
@@ -177,6 +217,7 @@
                         <div class="date-info">
                             <h3>Paper Submission</h3>
                             <p>July 1, 2025 23:59 AoE (Anywhere on Earth)</p>
+                            <div id="countdown_submission"></div>
                         </div>
                     </div>
 
@@ -197,6 +238,7 @@
                         <div class="date-info">
                             <h3>Camera Ready</h3>
                             <p>Aug. 7, 2025 23:59 AoE (Anywhere on Earth)</p>
+                            <div id="countdown_camera"></div>
                         </div>
                     </div>
 
@@ -239,11 +281,11 @@
 
                     <h3>Submission Guidelines</h3>
                     <p>
+                        Papers are limited to four pages in the <a href="https://media.eventhosts.cc/Conferences/ICCV2025/ICCV2025-Author-Kit-Feb.zip">ICCV style</a>, excluding references and appendices.
                         <!-- Papers should be submitted in the <a href="https://media.eventhosts.cc/Conferences/ICCV2025/ICCV2025-Author-Kit-Feb.zip">ICCV format</a>,
                         with a length of 2-8 pages (excluding references). All
                         submissions will be peer-reviewed, and accepted papers
                         will be presented at the workshop as posters. -->
-                        TBD
                     </p>
 
                     <p>Submissions should be made through the <a
@@ -257,10 +299,12 @@
                             <li><strong>Paper Submission Deadline:</strong>
                                 July 1, 2025 23:59 AoE (Anywhere on Earth)</li>
                             <li><strong>Decision Notification:</strong> July 31, 2025</li>
-                            <!-- <li><strong>Camera Ready Deadline:</strong> May 20, 2025</li> -->
+                            <li><strong>Camera Ready Deadline:</strong> August 7, 2025 23:59 AoE (Anywhere on Earth)</li>
                             <li><strong>Workshop Date:</strong> October 19th, 2025 (morning session)</li>
                         </ul>
                     </div>
+
+                    <br>
 
                     <h3>Review Process</h3>
                     <p>
@@ -759,4 +803,5 @@
                 src="//clustrmaps.com/map_v2.js?d=j7FDWI1wzKKEzCWLohxh7IFyPRkDO_Yoq8ehLPPnKB8&cl=ffffff&w=a"></script>
         </div>
     </body>
+    
 </html>
