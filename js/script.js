@@ -1,22 +1,10 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // Initialize Vanta.js background effect
-    const vantaEffect = VANTA.RINGS({
-        el: "#hero-background",
-        mouseControls: false,
-        touchControls: false,
-        gyroControls: false,
-        minHeight: 100.00,
-        minWidth: 100.00,
-        scale: 0.12,
-        scaleMobile: 0.12,
-
-        // Appearance
-        backgroundColor: 0x202428, // dark background
-        color: 0x2563eb,           // ring color
-        waveSpeed: 0.1,
-        ringCount: 2,
-    });
-
+    // Static background - simple dark gradient instead of VANTA.js
+    const heroBackground = document.getElementById('hero-background');
+    if (heroBackground) {
+        heroBackground.style.background = 'linear-gradient(135deg,rgba(12, 24, 59, 0.57) 0%,rgba(15, 38, 113, 0.56) 50%,rgba(55, 76, 136, 0.57) 100%)';
+    }
+    
     // Mobile navigation toggle
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('nav ul');
