@@ -935,12 +935,14 @@ section>p {
     color: white;
     font-weight: 600;
     padding: 15px 10px;
-    min-width: 100px;
+    min-width: 120px;
+    width: 120px;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     font-size: 14px;
+    flex-shrink: 0;
 }
 
 .event {
@@ -979,13 +981,9 @@ section>p {
 /* Coffee break and special events */
 .timeline-item:nth-child(6) .time,
 .timeline-item:nth-child(1) .time,
-.timeline-item:last-child .time {
-    background-color: var(--secondary-color);
-}
-
-/* For the poster session at the end (second to last item) */
+.timeline-item:last-child .time,
 .timeline-item:nth-last-child(2) .time {
-    background-color: var(--secondary-color);
+    background-color: var(--primary-color);
 }
 
 /* Speaker photos in timeline */
