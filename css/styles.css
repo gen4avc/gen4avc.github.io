@@ -1304,3 +1304,28 @@ del {
     color: #666;
     text-decoration: line-through;
 }
+
+.poster-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.poster-title-row h4 {
+    margin: 0;
+    font-weight: 500;
+    flex: 1;
+}
+
+.poster-id {
+    min-width: 90px;
+    text-align: right;
+    color: #555;
+    font-weight: 400;
+    font-size: 1em;
+}
+
+.poster-item {
+    margin-bottom: 8px;
+}
